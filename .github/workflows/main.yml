@@ -13,10 +13,10 @@ jobs:
       - name: Checkout  # 拉取代码
         uses: actions/checkout@v2
 
-      - name: Setup Node.js # 配置 Node 环境
+      - name: Use Node.js 14.x
         uses: actions/setup-node@v1
         with:
-          node-version: 12.13.0
+          node-version: 14.x
 
       - name: build
         run: npm run build && npm run export # 执行部署程序
