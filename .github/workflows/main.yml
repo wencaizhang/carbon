@@ -12,24 +12,20 @@ jobs:
     steps:
       - name: Checkout  # 拉取代码
         uses: actions/checkout@v2
-      
+
       - name: Setup Node.js # 配置 Node 环境
         uses: actions/setup-node@v1
         with:
           node-version: 12.13.0
-            
+
       - name: build
         run: npm run build && npm run export # 执行部署程序
 
-      # 使用云开发 Github Action 部署
-      - name: Deploy static to Tencent CloudBase
+      - name: Deploy static to Tencent CloudBase # 使用云开发 Github Action 部署
         id: deployStatic
         uses: TencentCloudBase/cloudbase-action@v1
         with:
-        	# 云开发的访问密钥 secretId 和 secretKey
           secretId: ${{ secrets.QCLOUD_APIKEYID }}
           secretKey: ${{ secrets.QCLOUD_APIKEY }}
-          # 云开发的环境id
           envId: ${{ secrets.QCLOUD_ENV_ID }}
-          # Github 项目静态文件的路径
           staticSrcPath: out/
