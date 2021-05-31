@@ -19,7 +19,7 @@ jobs:
           node-version: 14.x
 
       - name: build
-        run: npm run build && npm run export # 执行部署程序
+        run: yarn && npm run build && npm run export # 执行部署程序
 
       - name: Deploy static to Tencent CloudBase # 使用云开发 Github Action 部署
         id: deployStatic
